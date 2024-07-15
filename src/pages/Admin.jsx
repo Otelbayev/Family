@@ -78,13 +78,16 @@ const Admin = () => {
   async function getUsers() {
     try {
       setLoading(true);
-      const res = await fetch("/api/departament/getalldepartament", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
+      const res = await fetch(
+        `${import.meta.env.VITE_BASE_API}/departament/getalldepartament`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
       const data = await res.json();
       setData(data);
       setLoading(false);
@@ -153,6 +156,6 @@ const Admin = () => {
       </div>
     </div>
   );
-}
+};
 
-export default Admin
+export default Admin;
